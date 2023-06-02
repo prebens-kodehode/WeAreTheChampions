@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+    <title>We are the Champions</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <img src="assets/freddie.png" />
+        <h1>We are the Champions</h1>
+      </header>
+      <main>
+        <textarea
+          type="text"
+          id="input-message"
+          class="input-box"
+          placeholder="Write your endorsement here"
+        ></textarea>
+        <div class="input-boxes-small">
+          <input
+            type="text"
+            id="input-from"
+            class="input-box"
+            placeholder="From"
+          />
+          <input type="text" id="input-to" class="input-box" placeholder="To" />
+        </div>
+        <button id="btn-publish">Publish</button>
+      </main>
+      <section class="section-endorsements">
+        <h2>-Endorsements-</h2>
+        <div id="endorsements">
+          <ul id="endorsement-feed"></ul>
+        </div>
+      </section>
+      <div class="modal" id="modal">
+        <div class="close-modal-btn-container">
+          <button id="modal-close-btn">X</button>
+        </div>
+        <div class="modal-inner">
+          <p class="modal-text">Please fill in all input fields!</p>
+    </div>
+    <script src="index.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+:root {
+  --main-bg-color: #111827;
+  --input-box-color: #444059;
+  --btn-bg-color: #28a9f1;
+  --btn-txt-color: #04131c;
+  --light-txt-color: #ffffff;
+  --txt-color: #1b1924;
+  --placeholder-color: #8f8f8f;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--txt-color);
+}
+
+img {
+  width: clamp(4rem, 20%, 10rem);
+}
+
+h1,
+h2 {
+  color: var(--light-txt-color);
+  text-align: center;
+}
+
+/* header {
+  padding: 3rem 0 1rem 0;
+} */
+
+.wrapper {
+  background: var(--main-bg-color);
+  padding: 5rem;
+}
+
+main {
+  font-family: "Inter", sans-serif;
+}
+
+header,
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  width: 21rem;
+  margin: 0 auto;
+}
+
+.input-box {
+  background: var(--input-box-color);
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  color: var(--light-txt-color);
+}
+
+#input-message {
+  width: 20rem;
+  height: 7rem;
+  resize: none;
+  padding: 1rem;
+}
+
+.input-boxes-small {
+  display: flex;
+  justify-content: space-between;
+  width: 21rem;
+}
+
+#input-to,
+#input-from {
+  width: 9rem;
+  height: 2.5rem;
+  text-align: center;
+}
+
+#btn-publish {
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem 0.3rem 2rem;
+  background: var(--btn-bg-color);
+  border-radius: 0.5rem;
+  width: 21rem;
+  height: 4rem;
+  color: var(--btn-txt-color);
+  transition: transform 300ms;
+}
+
+#btn-publish:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: transform 100ms;
+}
+
+#btn-publish:active {
+  transform: scale(0.8);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 13rem;
+  width: 22rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 0.3rem 0.15rem #666;
+  background-color: #212529;
+  color: var(--light-txt-color);
+}
+
+.close-modal-btn-container {
+  text-align: right;
+  margin: 0.5rem;
+}
+
+#modal-close-btn {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--light-txt-color);
+  background-color: transparent;
+  border: 0.1rem solid transparent;
+}
+
+#modal-close-btn:hover,
+#modal-close-btn:active {
+  color: #ba0a0a;
+  cursor: pointer;
+}
+
+.modal-inner {
+  margin: 3rem auto;
+}
+
+.modal-text {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+h1,
+h2,
+button,
+.modal-text {
+  font-family: "Josefin Sans", sans-serif;
+}
