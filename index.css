@@ -34,7 +34,8 @@ h2 {
   padding: 5rem;
 }
 
-main {
+main,
+li {
   font-family: "Inter", sans-serif;
 }
 
@@ -47,6 +48,25 @@ main {
   gap: 0.5rem;
   width: 21rem;
   margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  gap: 1rem;
+  transform: translateX(-1.2rem);
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  width: 19rem;
+  background: #fff;
+  padding: 0.3rem 1rem;
+  border-radius: 0.1rem;
 }
 
 .input-box {
@@ -108,7 +128,7 @@ main {
   margin: auto;
   height: 13rem;
   width: 22rem;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   box-shadow: 0 0 0.3rem 0.15rem #666;
   background-color: #212529;
   color: var(--light-txt-color);
@@ -142,9 +162,60 @@ main {
   font-size: 1.5rem;
 }
 
+.endorsement-from-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.likes-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.heart-icon {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--txt-color);
+  background-color: transparent;
+  border: 0.01rem solid transparent;
+  margin: 0;
+  padding: 0;
+  transition: all 300ms;
+}
+
+.heart-icon:hover {
+  color: #ce0202;
+  transform: scale(1.1);
+}
+
+.heart-icon:active {
+  color: #ce0202;
+  transition: all 50ms;
+  transform: scale(0.9);
+}
+
+.paragraph-msg {
+  font-size: 0.9rem;
+}
+
+.paragraph-bold,
+.likes-number {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 h1,
 h2,
-button,
+#btn-publish,
 .modal-text {
   font-family: "Josefin Sans", sans-serif;
+}
+
+ul,
+li {
+  color: var(--txt-color);
 }
