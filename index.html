@@ -27,7 +27,27 @@
         <h1>We are the Champions</h1>
       </header>
       <main>
-        <textarea
+        <form>
+          <textarea
+          type="text"
+          id="input-message"
+          class="input-box"
+          placeholder="Write your endorsement here"
+          required
+        ></textarea>
+        <div class="input-boxes-small">
+          <input
+            type="text"
+            id="input-from"
+            class="input-box"
+            placeholder="From"
+            required
+          />
+          <input type="text" id="input-to" class="input-box" placeholder="To" required/>
+        </div>
+        <input type="submit" value="Publish" id="btn-publish">
+        </form>
+        <!-- <textarea
           type="text"
           id="input-message"
           class="input-box"
@@ -42,7 +62,7 @@
           />
           <input type="text" id="input-to" class="input-box" placeholder="To" />
         </div>
-        <button id="btn-publish">Publish</button>
+        <button id="btn-publish">Publish</button> -->
       </main>
       <section class="section-endorsements">
         <h2>-Endorsements-</h2>
@@ -50,13 +70,6 @@
           <ul id="endorsement-feed"></ul>
         </div>
       </section>
-      <div class="modal" id="modal">
-        <div class="close-modal-btn-container">
-          <button id="modal-close-btn">X</button>
-        </div>
-        <div class="modal-inner">
-          <p class="modal-text">Please fill in all input fields!</p>
-    </div>
     <script src="index.js" type="module"></script>
   </body>
 </html>

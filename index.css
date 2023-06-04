@@ -40,7 +40,7 @@ li {
 }
 
 header,
-main {
+form {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -111,55 +111,12 @@ li {
 #btn-publish:hover {
   cursor: pointer;
   transform: scale(1.03);
-  transition: transform 100ms;
+  transition: transform 50ms;
 }
 
 #btn-publish:active {
-  transform: scale(0.8);
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 13rem;
-  width: 22rem;
-  border-radius: 0.3rem;
-  box-shadow: 0 0 0.3rem 0.15rem #666;
-  background-color: #212529;
-  color: var(--light-txt-color);
-}
-
-.close-modal-btn-container {
-  text-align: right;
-  margin: 0.5rem;
-}
-
-#modal-close-btn {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--light-txt-color);
-  background-color: transparent;
-  border: 0.1rem solid transparent;
-}
-
-#modal-close-btn:hover,
-#modal-close-btn:active {
-  color: #ba0a0a;
-  cursor: pointer;
-}
-
-.modal-inner {
-  margin: 3rem auto;
-}
-
-.modal-text {
-  text-align: center;
-  font-size: 1.5rem;
+  transform: scale(0.95);
+  transition: transform 50ms;
 }
 
 .endorsement-from-wrapper {
@@ -210,8 +167,7 @@ li {
 
 h1,
 h2,
-#btn-publish,
-.modal-text {
+#btn-publish {
   font-family: "Josefin Sans", sans-serif;
 }
 

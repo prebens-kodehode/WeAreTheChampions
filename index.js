@@ -17,22 +17,20 @@ const database = getDatabase(app);
 const endorsementFeedInDB = ref(database, "endorsementFeed");
 
 const inputMessageEl = document.getElementById("input-message");
+const endorsementForm = document.querySelector("form");
 const inputFromEl = document.getElementById("input-from");
 const inputToEl = document.getElementById("input-to");
 const btnPublish = document.getElementById("btn-publish");
-const btnModal = document.getElementById("modal-close-btn");
-const modalEl = document.getElementById("modal");
 const endorsementFeedEl = document.getElementById("endorsement-feed");
-// const endorsementFeedEl = document.getElementById("endorsement-feed")
-// const likes = 0
 
-btnPublish.addEventListener("click", function () {
+endorsementForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
   if (
     inputMessageEl.value === "" ||
     inputFromEl.value === "" ||
     inputToEl.value === ""
   ) {
-    modalEl.style.display = "block";
   } else {
     let inputTo = inputToEl.value;
     let inputFrom = inputFromEl.value;
@@ -46,15 +44,9 @@ btnPublish.addEventListener("click", function () {
       likes: likesValue,
     };
 
-    // let endorsementObject = [inputTo, inputFrom, inputMessage, likesValue];
-
     push(endorsementFeedInDB, endorsementObject);
     clearInputFields();
   }
-});
-
-btnModal.addEventListener("click", function () {
-  modalEl.style.display = "none";
 });
 
 onValue(endorsementFeedInDB, function (snapshot) {
@@ -64,7 +56,6 @@ onValue(endorsementFeedInDB, function (snapshot) {
     clearEndorsementFeedEl();
 
     for (let i = 0; i < endorsementArray.length; i++) {
-
       let currentEndorsement = endorsementArray[i];
 
       let currentEndorsementID = currentEndorsement[0];
@@ -72,7 +63,6 @@ onValue(endorsementFeedInDB, function (snapshot) {
 
       let valuesArray = Object.values(currentEndorsementValue);
 
-      // clearEndorsementFeedEl();
       appendMessageToEndorsementFeedEl(
         valuesArray[0],
         valuesArray[1],
@@ -94,48 +84,56 @@ function clearEndorsementFeedEl() {
   endorsementFeedEl.innerHTML = "";
 }
 
-function appendMessageToEndorsementFeedEl(from, likes, message, to, endorsementID) {
-  
-  let listItem = document.createElement("li")
+function appendMessageToEndorsementFeedEl(
+  from,
+  likes,
+  message,
+  to,
+  endorsementID
+) {
+  let listItem = document.createElement("li");
 
-  let paragraphTo = document.createElement("p")
-      paragraphTo.classList.add("paragraph-bold")
-      paragraphTo.textContent = `To ${to}`
+  let paragraphTo = document.createElement("p");
+  paragraphTo.classList.add("paragraph-bold");
+  paragraphTo.textContent = `To ${to}`;
 
-  let paragraphMsg = document.createElement("p")
-      paragraphMsg.classList.add("paragraph-msg")
-      paragraphMsg.textContent = `${message}`
+  let paragraphMsg = document.createElement("p");
+  paragraphMsg.classList.add("paragraph-msg");
+  paragraphMsg.textContent = `${message}`;
 
-  let paragraphFromWrapper = document.createElement("div")
-      paragraphFromWrapper.classList.add("endorsement-from-wrapper")
+  let paragraphFromWrapper = document.createElement("div");
+  paragraphFromWrapper.classList.add("endorsement-from-wrapper");
 
-      let paragraphFrom = document.createElement("p")
-          paragraphFrom.classList.add("paragraph-bold")
-          paragraphFrom.textContent = `From ${from}`
+  let paragraphFrom = document.createElement("p");
+  paragraphFrom.classList.add("paragraph-bold");
+  paragraphFrom.textContent = `From ${from}`;
 
-      let likesSection = document.createElement("p")
-          likesSection.classList.add("likes-section")
+  let likesSection = document.createElement("p");
+  likesSection.classList.add("likes-section");
 
-          let heartBtn = document.createElement("button")
-              heartBtn.classList.add("heart-icon")
-              heartBtn.id = `heart-icon-${endorsementID}`
-              heartBtn.innerHTML = `&#10084;`
+  let heartBtn = document.createElement("button");
+  heartBtn.classList.add("heart-icon");
+  heartBtn.id = `heart-icon-${endorsementID}`;
+  heartBtn.innerHTML = `&#10084;`;
+  // let likesBtn = document.getElementById(`heart-icon-${endorsementID}`);
 
-          let likesNumber = document.createElement("p")
-              likesNumber.classList.add("likes-number")
-              likesNumber.innerHTML = `${likes}`
+  let likesNumber = document.createElement("p");
+  likesNumber.classList.add("likes-number");
+  likesNumber.innerHTML = `${likes}`;
 
-              likesSection.append(heartBtn, likesNumber)
+  likesSection.append(heartBtn, likesNumber);
 
-      paragraphFromWrapper.append(paragraphFrom, likesSection), 
+  paragraphFromWrapper.append(paragraphFrom, likesSection),
+    listItem.append(paragraphTo, paragraphMsg, paragraphFromWrapper);
 
-  listItem.append(paragraphTo, paragraphMsg, paragraphFromWrapper)
-  
-  // newEl.addEventListener("click", function() {
-  //     let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-      
-  //     remove(exactLocationOfItemInDB)
-  // })
-  
-  endorsementFeedEl.append(listItem)
+  heartBtn.addEventListener("click", function () {
+    let exactLocationOfItemInDB = ref(
+      database,
+      `endorsementFeed/${endorsementID}`
+    );
+
+    remove(exactLocationOfItemInDB);
+  });
+
+  endorsementFeedEl.append(listItem);
 }
