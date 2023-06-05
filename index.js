@@ -5,6 +5,8 @@ import {
   push,
   onValue,
   remove,
+  update,
+  get,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const appSettings = {
@@ -85,28 +87,28 @@ function clearEndorsementFeedEl() {
 }
 
 function appendMessageToEndorsementFeedEl(
-  from,
-  likes,
-  message,
-  to,
+  fromInDB,
+  likesInDB,
+  messageInDB,
+  toInDB,
   endorsementID
 ) {
   let listItem = document.createElement("li");
 
   let paragraphTo = document.createElement("p");
   paragraphTo.classList.add("paragraph-bold");
-  paragraphTo.textContent = `To ${to}`;
+  paragraphTo.textContent = `To ${toInDB}`;
 
   let paragraphMsg = document.createElement("p");
   paragraphMsg.classList.add("paragraph-msg");
-  paragraphMsg.textContent = `${message}`;
+  paragraphMsg.textContent = `${messageInDB}`;
 
   let paragraphFromWrapper = document.createElement("div");
   paragraphFromWrapper.classList.add("endorsement-from-wrapper");
 
   let paragraphFrom = document.createElement("p");
   paragraphFrom.classList.add("paragraph-bold");
-  paragraphFrom.textContent = `From ${from}`;
+  paragraphFrom.textContent = `From ${fromInDB}`;
 
   let likesSection = document.createElement("p");
   likesSection.classList.add("likes-section");
@@ -119,7 +121,7 @@ function appendMessageToEndorsementFeedEl(
 
   let likesNumber = document.createElement("p");
   likesNumber.classList.add("likes-number");
-  likesNumber.innerHTML = `${likes}`;
+  likesNumber.innerHTML = `${likesInDB}`;
 
   likesSection.append(heartBtn, likesNumber);
 
@@ -132,7 +134,14 @@ function appendMessageToEndorsementFeedEl(
       `endorsementFeed/${endorsementID}`
     );
 
-    remove(exactLocationOfItemInDB);
+    let updatedLikes = likesInDB + 1;
+    let updatedEndorsement = {
+      from: fromInDB,
+      likes: updatedLikes,
+      message: messageInDB,
+      to: toInDB,
+    };
+    update(exactLocationOfItemInDB, updatedEndorsement);
   });
 
   endorsementFeedEl.append(listItem);
