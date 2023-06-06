@@ -47,7 +47,7 @@ endorsementForm.addEventListener("submit", (event) => {
     };
 
     push(endorsementFeedInDB, endorsementObject);
-    clearInputFields();
+    endorsementForm.reset();
   }
 });
 
@@ -75,12 +75,6 @@ onValue(endorsementFeedInDB, function (snapshot) {
     }
   }
 });
-
-function clearInputFields() {
-  inputToEl.value = "";
-  inputFromEl.value = "";
-  inputMessageEl.value = "";
-}
 
 function clearEndorsementFeedEl() {
   endorsementFeedEl.innerHTML = "";
@@ -117,7 +111,6 @@ function appendMessageToEndorsementFeedEl(
   heartBtn.classList.add("heart-icon");
   heartBtn.id = `heart-icon-${endorsementID}`;
   heartBtn.innerHTML = `&#10084;`;
-  // let likesBtn = document.getElementById(`heart-icon-${endorsementID}`);
 
   let likesNumber = document.createElement("p");
   likesNumber.classList.add("likes-number");
@@ -136,10 +129,7 @@ function appendMessageToEndorsementFeedEl(
 
     let updatedLikes = likesInDB + 1;
     let updatedEndorsement = {
-      from: fromInDB,
       likes: updatedLikes,
-      message: messageInDB,
-      to: toInDB,
     };
     update(exactLocationOfItemInDB, updatedEndorsement);
   });
