@@ -28,27 +28,20 @@ const endorsementFeedEl = document.getElementById("endorsement-feed");
 endorsementForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (
-    inputMessageEl.value === "" ||
-    inputFromEl.value === "" ||
-    inputToEl.value === ""
-  ) {
-  } else {
-    let inputTo = inputToEl.value;
-    let inputFrom = inputFromEl.value;
-    let inputMessage = inputMessageEl.value;
-    let likesValue = 0;
+  let inputTo = inputToEl.value;
+  let inputFrom = inputFromEl.value;
+  let inputMessage = inputMessageEl.value;
+  let likesValue = 0;
 
-    let endorsementObject = {
-      to: inputTo,
-      from: inputFrom,
-      message: inputMessage,
-      likes: likesValue,
-    };
+  let endorsementObject = {
+    to: inputTo,
+    from: inputFrom,
+    message: inputMessage,
+    likes: likesValue,
+  };
 
-    push(endorsementFeedInDB, endorsementObject);
-    endorsementForm.reset();
-  }
+  push(endorsementFeedInDB, endorsementObject);
+  endorsementForm.reset();
 });
 
 onValue(endorsementFeedInDB, function (snapshot) {
